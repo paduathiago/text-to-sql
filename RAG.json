@@ -1,0 +1,166 @@
+[
+  {
+    "question": "What is the total number of professionals in the database?",
+    "sql": "SELECT COUNT(DISTINCT professional_id) AS total_professionals FROM prescriptions;"
+  },
+  {
+    "question": "Show me the prescription with ID 10.",
+    "sql": "SELECT * FROM prescriptions WHERE id = 10;"
+  },
+  {
+    "question": "Show me the prescriptions made by the professional with ID 5.",
+    "sql": "SELECT uuid FROM prescriptions WHERE professional_id = 5;"
+  },
+  {
+    "question": "Which age in years has the most prescriptions?",
+    "sql": "SELECT age_years, COUNT(*) AS prescription_count FROM prescriptions GROUP BY age_years ORDER BY prescription_count DESC LIMIT 1;"
+  },
+  {
+    "question": "What is the interval of the prescription with id 15?",
+    "sql": "SELECT interval FROM prescriptions WHERE id = 15;"
+  },
+  {
+    "question": "What is the age in years of the patient whose precription has id 20?",
+    "sql": "SELECT age_years FROM prescriptions WHERE id = 20;"
+  },
+  {
+    "question": "What is the age in months of the patient whose prescription has id 20?",
+    "sql": "SELECT age_months FROM prescriptions WHERE id = 20;"
+  },
+  {
+    "question": "What is the age in days of the patient whose prescription has id 20?",
+    "sql": "SELECT age_days FROM prescriptions WHERE id = 20;"
+  },
+  {
+    "question": "What is the description of the prescription with ID 99?",
+    "sql": "SELECT description FROM prescriptions WHERE id = 99;"
+  },
+  {
+    "question": "What is the observation of the prescription with ID 54?",
+    "sql": "SELECT observation FROM prescriptions WHERE id = 54;"
+  },
+  {
+    "question": "What is the dose quantity of the prescription with ID 30?",
+    "sql": "SELECT dose_quantity FROM prescriptions WHERE id = 30;"
+  },
+  {
+    "question": "What is the dose unit of the prescription with ID 30?",
+    "sql": "SELECT dose_unit FROM prescriptions WHERE id = 30;"
+  },
+  {
+    "question": "What is the route of administration for the prescription with ID 45?",
+    "sql": "SELECT via FROM prescriptions WHERE id = 45;"
+  },
+  {
+    "question": "What is the most common route of administration?",
+    "sql": "SELECT via, COUNT(*) AS count FROM prescriptions GROUP BY via ORDER BY count DESC LIMIT 1;"
+  },
+  {
+    "question": "Select the 5 professionals with the most prescriptions.",
+    "sql": "SELECT professional_id, COUNT(*) AS prescription_count FROM prescriptions GROUP BY professional_id ORDER BY prescription_count DESC LIMIT 5;"
+  },
+  {
+    "question": "Show me the prescriptions made for patients younger than 30 years old.",
+    "sql": "SELECT * FROM prescriptions WHERE age_years < 30;"
+  },
+  {
+    "question": "Show me the prescriptions whose interval is every 12 hours.",
+    "sql": "SELECT * FROM prescriptions WHERE interval = '12/12H';"
+  },
+  {
+    "question": "Show me the prescriptions whose interval is every 12 hours.",
+    "sql": "SELECT * FROM prescriptions WHERE interval = '12/12H';"
+  },
+  {
+    "question": "Show me the prescriptions whose interval is every 6 hours.",
+    "sql": "SELECT * FROM prescriptions WHERE interval = '6/6H';"
+  },
+  {
+    "question": "Show me the prescriptions whose dose unit is COMP and dose quantity is greater than 2.",
+    "sql": "SELECT * FROM prescriptions WHERE dose_unit = 'COMP' AND dose_quantity > 2;"
+  },
+  {
+    "question": "Show me the prescriptions whose route of administration is oral.",
+    "sql": "SELECT * FROM prescriptions WHERE via = 'VO';"
+  },
+  {
+    "question": "Show me the prescriptions whose route of administration is oral and the dose unit is COMP.",
+    "sql": "SELECT * FROM prescriptions WHERE via = 'VO' AND dose_unit = 'COMP';"
+  },
+  {
+    "question": "Show me the observations of the prescriptions made by the professional with ID 3.",
+    "sql": "SELECT observation FROM prescriptions WHERE professional_id = 3;"
+  },
+  {
+    "question": "Show me the descriptions of the prescriptions whose dose quantity is greater than 5.",
+    "sql": "SELECT description FROM prescriptions WHERE dose_quantity > 5;"
+  },
+  {
+    "question": "Show me the observations of the prescriptions made by the professional with ID 3.",
+    "sql": "SELECT observation FROM prescriptions WHERE professional_id = 3;"
+  },
+  {
+    "question": "Show me the scheduled prescriptions",
+    "sql": "SELECT * FROM prescriptions WHERE scheduled = TRUE;"
+  },
+  {
+    "question": "Show me the prescriptions whose descriptions contain DipiRONA 500 mg and are scheduled.",
+    "sql": "SELECT * FROM prescriptions WHERE description LIKE '%DipiRONA 500 mg%' AND scheduled = TRUE;"
+  },
+  {
+    "question": "Show me the prescriptions whose procedure contains TRATAMENTO DE INSUFICIENCIA CARDIACA ",
+    "sql": "SELECT * FROM prescriptions WHERE procedure LIKE '%TRATAMENTO DE INSUFICIENCIA CARDIACA%';"
+  },
+  {
+    "question": "Show me the prescriptions whose procedure contains TRATAMENTO DE DOENCAS BACTERIANAS ",
+    "sql": "SELECT * FROM prescriptions WHERE procedure LIKE '%TRATAMENTO DE DOENCAS BACTERIANAS%';"
+  },
+  {
+    "question": "Show me the prescriptions that include the word NÁUSEA in the observation.",
+    "sql": "SELECT * FROM prescriptions WHERE observation LIKE '%NÁUSEA%';"
+  },
+  {
+    "question": "Show me the prescriptions that include the word DOR in the observation.",
+    "sql": "SELECT * FROM prescriptions WHERE observation LIKE '%DOR%';"
+  },
+  {
+    "question": "Show me the prescriptions that include the word VÔMITO in the observation.",
+    "sql": "SELECT * FROM prescriptions WHERE observation LIKE '%VÔMITO%';"
+  },
+  {
+    "question": "Show me the ids of the professionals who make prescriptions for patients with cardiac insufficiency.",
+    "sql": "SELECT DISTINCT professional_id FROM prescriptions WHERE procedure LIKE '%INSUFICIENCIA CARDIACA%';"
+  },
+  {
+    "question": "Show me the presentations that include the word BISNAGA",
+    "sql": "SELECT DISTINCT presentation FROM prescriptions WHERE presentation LIKE '%BISNAGA%';"
+  },
+  {
+    "question": "To which description does the item 8899 refer to?",
+    "sql": "SELECT description FROM prescriptions WHERE id = 8899;"
+  },
+  {
+    "question": "To which procedures was TALIDOMIDA prescribed?",
+    "sql": "SELECT procedure FROM prescriptions WHERE description LIKE '%TALIDOMIDA%';"
+  },
+  {
+    "question": "Name all the different procedures in the database.",
+    "sql": "SELECT DISTINCT procedure FROM prescriptions;"
+  },
+  {
+    "question": "What are the descriptions related to the procedure TRATAMENTO DE DIABETES MELLITUS?",
+    "sql": "SELECT description FROM prescriptions WHERE procedure LIKE '%TRATAMENTO DE DIABETES MELLITUS%';"
+  },
+  {
+    "question": "What are the descriptions related to the procedure TRATAMENTO DE DIABETES MELLITUS?",
+    "sql": "SELECT description FROM prescriptions WHERE procedure LIKE '%TRATAMENTO DE DIABETES MELLITUS%';"
+  },
+  {
+    "question": "What are the 10 most common procedures in the database?",
+    "sql": "SELECT procedure, COUNT(*) AS count FROM prescriptions GROUP BY procedure ORDER BY count DESC LIMIT 10;"
+  },
+  {
+    "question": "Show me the precriptions made in 2016",
+    "sql": "SELECT * FROM prescriptions WHERE timestamp LIKE '2016%';"
+  }
+]
